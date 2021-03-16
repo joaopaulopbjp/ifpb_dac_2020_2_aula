@@ -14,8 +14,8 @@ public class InfoController {
 
 	@Autowired
 	private InfoService infoService;
-	
-	public InfoFornecedor informacoesPorEstado(String estado) {
+	@RequestMapping("/{estado}")
+	public InfoFornecedor informacoesPorEstado(@PathVariable String estado) {
 		System.out.println("informaçõesPorEstado: "+estado);
 		return infoService.getInfoPorEstado(estado);
 	}
