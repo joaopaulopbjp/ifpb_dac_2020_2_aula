@@ -19,6 +19,7 @@ public class CompraController {
 	@Autowired
 	private CompraService compraService;
 
+	
 	@RequestMapping("/{id}")
 	public Compra getById(@PathVariable("id") Long id) {
 		return compraService.getById(id);
