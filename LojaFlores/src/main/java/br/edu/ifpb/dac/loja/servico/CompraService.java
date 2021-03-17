@@ -36,15 +36,21 @@ public class CompraService {
 	public Compra realizarCompra(CompraDTO compra) {
 		System.out.println("CompraService_realizarCompra_estado: "+compra.getEndereco().getEstado());
 	
-		InfoFornecedorDTO info = fornecedorCliente.buscaInformacoesPorEstado(compra.getEndereco().getEstado());
-	
-		System.out.println("Endereço fornecedor: "+info.getEndereco());
-
 		Compra compraSalva = new Compra();
 		compraSalva.setState(CompraState.RECEBIDO);
 		compraSalva.setEnderecoDestino(compra.getEndereco().toString());
-//		compraRepository.save(compraSalva);
-//		compra.setCompraId(compraSalva.getId());
+		compraRepository.save(compraSalva);
+		compra.setCompraId(compraSalva.getId());
+		
+		InfoFornecedorDTO info = fornecedorCliente.buscaInformacoesPorEstado(compra.getEndereco().getEstado());
+		System.out.println("Endereço fornecedor: "+info.getEndereco());
+
+		InfoPedidoDTO pedido = fornecedorCliente.realizaPedido(compra.getItens());
+		compraSalva.setState(CompraState.PEDIDO_REALIZADO);
+		compraSalva.setPedidoId(pedido.getId());
+		compraSalva.setTempoDePreparo(pedido.getTempoDePreparo());
+		compraRepository.save(compraSalva);
+	
 
 		return compraSalva;
 	}
