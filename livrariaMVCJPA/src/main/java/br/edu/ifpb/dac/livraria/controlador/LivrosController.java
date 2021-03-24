@@ -19,13 +19,30 @@ public class LivrosController {
 	@Autowired
 	private LivroService livroService;
 
-	@GetMapping("/livros")
+	@GetMapping("/publico/livros")
 	public String listar(Model model) {
 		List<Livro> listaLivros = livroService.listaLivros();
 
 		model.addAttribute("livros", listaLivros);
 
-		return "livros";
+		return "/livros/livros";
 	}
+	
+	@GetMapping("/protegido/formAdicionaLivro")
+	public String mostraFormularioLivro(Model model) {
+
+		model.addAttribute("livro", new Livro());
+
+		return "/livros/formLivro";
+	}
+	
+	@PostMapping("/protegido/adicionaLivro")
+	public String processarFormulario(@ModelAttribute("livro") Livro livro) {
+		
+		livroService.adicionaLivro(livro);
+		
+		return "redirect:/publico/livros";
+	}
+
 
 }
