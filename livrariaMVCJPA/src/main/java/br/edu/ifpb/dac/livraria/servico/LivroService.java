@@ -17,4 +17,8 @@ public class LivroService {
 	public List<Livro> listaLivros(){
 		return (List<Livro>) livroRepositorio.findAll();
 	}
+	
+	public void adicionaLivro(Livro l) {
+		livroRepositorio.save(l);
+	}
 }
