@@ -14,15 +14,7 @@
             	<h1>Lista dos livros</h1>
             	<nav>
             		<a href="/publico/livros">Home</a>
-            		<a sec:authorize="hasAuthority('ADMIN')" href="/protegido/formAdicionaLivro">Adicionar Livro</a>
             	</nav>
-            	<div sec:authorize="isAuthenticated()" th:text="${usuario.nome}"> </div>
-            	<div sec:authorize="isAuthenticated()" th:text="${usuario.id}"> </div>
-            	<div sec:authorize="isAuthenticated()">
-            		<form method="post" th:action="@{/logout}">
-  						<button type="submit">Sair</button>
-					</form>
-            	</div>
             </header>
 
             <div class="listaLivros" th:each="livro : ${livros}">
