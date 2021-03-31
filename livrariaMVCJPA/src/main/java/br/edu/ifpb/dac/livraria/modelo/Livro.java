@@ -26,7 +26,7 @@ public class Livro{
 	@Temporal(TemporalType.DATE)
 	private Date dataLancamento;
 	
-	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	private List<Autor> autores;
 	
 	private static final long serialVersionUID = 1L;
