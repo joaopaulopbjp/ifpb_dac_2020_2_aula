@@ -1,18 +1,18 @@
 package br.edu.ifpb.dac.livraria.controlador;
 
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/livros")
+@Controller
+@RequestMapping("/")
 public class ClienteController {
 
 
 	@GetMapping
-	public String listar() {
+	public String home() {
 
-		return "/livros/livroForm";
+		return "index";
 	}
 }
