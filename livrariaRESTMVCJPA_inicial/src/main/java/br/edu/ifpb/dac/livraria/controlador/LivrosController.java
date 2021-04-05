@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import br.edu.ifpb.dac.livraria.modelo.Livro;
 import br.edu.ifpb.dac.livraria.servico.LivroService;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
 @RequestMapping("/livros")
 public class LivrosController {
