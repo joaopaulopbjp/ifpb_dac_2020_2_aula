@@ -12,7 +12,7 @@ import br.edu.ifpb.dac.livraria.servico.LivroService;
 
 @Controller
 @RequestMapping("/livros")
-public class LivrosController {
+public class LivrosRestController {
 	
 	@Autowired
 	private LivroService livroService;
