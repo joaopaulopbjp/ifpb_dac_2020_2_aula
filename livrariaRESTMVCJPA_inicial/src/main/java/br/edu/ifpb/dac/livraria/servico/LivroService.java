@@ -39,4 +39,11 @@ public class LivroService {
 		}
 		
 	}
+	
+	public void excluiLivro(Integer id) {
+		Optional<Livro> livroRecuperado = livroRepositorio.findById(id);
+		if(livroRecuperado.isPresent()) {
+			livroRepositorio.delete(livroRecuperado.get());
+		}
+	}
 }
