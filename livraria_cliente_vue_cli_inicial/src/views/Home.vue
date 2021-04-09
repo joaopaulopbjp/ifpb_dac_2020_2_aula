@@ -12,9 +12,11 @@
 </div>
 </template>
 <script>
+import axios from 'axios'
+
 export default{
-    name: 'Home',
-    data() { 
+	name: 'Home',
+	data() {
 		return {
 			livros: [
 				{
@@ -23,7 +25,12 @@ export default{
 					preco:44
 				}
 			]
-			};
-}
+		};
+	},
+	mounted () {
+		axios
+		.get('http://localhost:8080/livros')
+		.then(response => (this.livros = response.data));
+	}
 }
 </script>

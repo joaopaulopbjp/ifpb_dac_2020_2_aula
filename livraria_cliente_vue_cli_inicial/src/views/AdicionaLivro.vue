@@ -32,22 +32,33 @@
 	</div>
 </template>
 <script>
+import axios from 'axios'
+
 export default{
-    name: 'AdicionaLivro',
-    data() {
-        return {
-            livro: {
-                titulo: "",
+	name: 'AdicionaLivro',
+	data() {
+		return {
+			livro: {
+				titulo: "",
 				isbn: "",
 				preco:""
-                }
-                }
-    },
-    methods:{
-        enviarNovoLivro: function(livro){
-        console.log("Livro adicionado: "+livro.titulo);
-		/*this.$router.replace("/");*/
-        }
-        }
+			}
+		}
+	},
+	methods:{
+		enviarNovoLivro: function(livro){
+			axios
+			.post('http://localhost:8080/livros',{
+				titulo: livro.titulo,
+				isbn:livro.isbn,
+				preco:livro.preco
+			});
+			this.livro.titulo = "";
+			this.livro.isbn = "";
+			this.livro.preco="";
+			console.log("Livro adicionado: "+livro.titulo);
+			this.$router.push("/");
+		}
+	}
 }
 </script>
